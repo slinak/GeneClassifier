@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  h1= title
+  form
+   h3 #{"Sample Data Upload"}
+   input(type= 'file' id='uploadData' name='filename')
+   br
+   input(type='submit')
+
+  br
+  br
+  form
+   h3 #{"Classification Upload"}
+   input(type= 'file' id='uploadClassifications' name='filename')
+   br
+   input(type='submit')
+  
+
+  p #{"Calculation Time (ms): " + calcTime}
+  div #{JSON.stringify(testData)}
+  p #{JSON.stringify(associatedData)}
