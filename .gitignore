@@ -361,3 +361,8 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/GeneClassifier/data/qupath_cell_classification_with_trained_object_classifiers.csv
+/GeneClassifier/data/qupath_cell_classification_with_trained_object_classifiers.json
+/GeneClassifier/data/Test Data Set.csv
+/GeneClassifier/data/test data set.json
+/GeneClassifier/data/Test Data Set.xlsx
