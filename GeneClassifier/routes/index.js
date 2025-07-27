@@ -5,6 +5,7 @@ var router = express.Router();
 //Example: 'HLA-DR' => [ 'B Cells', 'Monocytes', 'M1-like Macrophages', 'Conventional DCs (cDCs)', 'Monocyte-derived DCs (moDCs)' ],
 var positiveClassificationsToCellTypes = new Map();
 
+//The test data contains a ton of other information not useful for this
 var simplifiedTestData = new Map();
 
 //Classifications is a hashmap of an Object ID to a list of positive classification cell types... I think that's the right terminology?
@@ -21,12 +22,19 @@ router.get('/', function (req, res, next) {
     var endTime = new Date();
 
     console.log(classifications);
-    
+
     res.render('index', {
         title: `WHY SCIENTISTS NO DATABASE BRAIN`,
         testData: simplifiedTestData,
         associatedData: classifications,
         calcTime: endTime.getMilliseconds() - startTime.getMilliseconds()
+    });
+});
+
+router.get('/process', function (req, res, next) {
+    res.render('process', {
+        title: `PROCESSES`,
+        data: AssociatePositiveClassificationsToTestData(),
     });
 });
 
@@ -47,7 +55,6 @@ function GetClassificationFromData(sampleClassifications) {
 
     return sampleClassification;
 }
-
 function ParseAndBuildClassificationDictionary() {
     var classifications = GetJsonFileContents('C:\\Users\\merse\\source\\repos\\GeneClassifier\\GeneClassifier\\data\\qupath_cell_classification_with_trained_object_classifiers.json');
     var newPositiveClassifications = new Map();
@@ -59,7 +66,6 @@ function ParseAndBuildClassificationDictionary() {
 
     return newPositiveClassifications;
 }
-
 function ParseAndSimplifyTestData() {
     var testData = GetJsonFileContents('C:\\Users\\merse\\source\\repos\\GeneClassifier\\GeneClassifier\\data\\test data set.json');
     var simplifiedData = [];
@@ -73,7 +79,6 @@ function ParseAndSimplifyTestData() {
 
     return simplifiedData;
 }
-
 function GetJsonFileContents(filePath) {
     const fs = require('fs');
     return JSON.parse(fs.readFileSync(filePath, 'utf8'));
