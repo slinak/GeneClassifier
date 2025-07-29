@@ -56,6 +56,7 @@ function GetClassificationFromData(sampleClassifications) {
     return sampleClassification;
 }
 function ParseAndBuildClassificationDictionary() {
+    //TODO hard coded file path
     var classifications = GetJsonFileContents('C:\\Users\\merse\\source\\repos\\GeneClassifier\\GeneClassifier\\data\\qupath_cell_classification_with_trained_object_classifiers.json');
     var newPositiveClassifications = new Map();
 
@@ -67,6 +68,7 @@ function ParseAndBuildClassificationDictionary() {
     return newPositiveClassifications;
 }
 function ParseAndSimplifyTestData() {
+    //TODO hard coded file path
     var testData = GetJsonFileContents('C:\\Users\\merse\\source\\repos\\GeneClassifier\\GeneClassifier\\data\\test data set.json');
     var simplifiedData = [];
 
