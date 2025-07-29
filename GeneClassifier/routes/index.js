@@ -26,7 +26,7 @@ router.get('/', function (req, res, next) {
     res.render('index', {
         title: `WHY SCIENTISTS NO DATABASE BRAIN`,
         testData: simplifiedTestData,
-        associatedData: classifications,
+        associatedData: 'classifications',
         calcTime: endTime.getMilliseconds() - startTime.getMilliseconds()
     });
 });
