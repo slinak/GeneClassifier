@@ -12,12 +12,12 @@ var simplifiedTestData = new Map();
 var classifications = new Map();
 
 /* GET home page. */
-router.get('/', function (req, res, next) {
+router.get('/', async function (req, res, next) {
     var startTime = new Date();
 
     positiveClassificationsToCellTypes = ParseAndBuildClassificationDictionary();
     simplifiedTestData = ParseAndSimplifyTestData();
-    classifications = AssociatePositiveClassificationsToTestData();
+    classifications = await AssociatePositiveClassificationsToTestData();
 
     var endTime = new Date();
 
@@ -26,7 +26,7 @@ router.get('/', function (req, res, next) {
     res.render('index', {
         title: `WHY SCIENTISTS NO DATABASE BRAIN`,
         testData: simplifiedTestData,
-        associatedData: 'classifications',
+        associatedData: classifications.entries(),
         calcTime: endTime.getMilliseconds() - startTime.getMilliseconds()
     });
 });

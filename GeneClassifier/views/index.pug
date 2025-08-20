@@ -1,6 +1,8 @@
 extends layout
 
 block content
+  const iterator = associatedData;
+
   h1= title
   form
    h3 #{"Sample Data Upload"}
@@ -18,5 +20,9 @@ block content
   
 
   p #{"Calculation Time (ms): " + calcTime}
-  p #{datas}
-  p #{associatedData}
+  p #{"TestData: " + testData}
+  p #{"Associated Data: " + associatedData}
+  ul
+    each val, key in associatedData
+      each val in key
+        li = key + " : " + val
